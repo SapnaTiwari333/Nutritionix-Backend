@@ -19,7 +19,7 @@ app.use(express.json());
 app.use("/api/users",require("./routes/userRoutes"));
 
 // Error handler middleware
-app.use(errorHandler);
+//app.use(errorHandler);
 
 
 app.listen(PORT, () => {
