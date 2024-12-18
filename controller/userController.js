@@ -98,13 +98,10 @@ const currentUser=asyncHandler(async(req,res)=>{
 });
 
 //@desc send image User
-  //@route post /api/User/login/run
-  //@access public
+//@route post /api/User/login/run
+//@access public
 
   const searching= asyncHandler(async(req,res)=>{
-    // Access your API key as an environment variable (see "Set up your API key" above)
-
-    
   const genAI = new GoogleGenerativeAI(process.env.API_KEY);
   
   // Converts local file information to a GoogleGenerativeAI.Part object.
@@ -124,8 +121,6 @@ const currentUser=asyncHandler(async(req,res)=>{
     const prompt = "What ingredients are present in this dish and can you provide the quantity present(approx) also rough calories of each item and overall approx calories(lower value) ";
   
     const image = [
-      // fileToGenerativePart((__dirname,"images/image1.png"), "image/png"),
-      // fileToGenerativePart((__dirname,"images/image1.jpeg"), "image/jpeg"),
       fileToGenerativePart((__dirname,"gemini/images/image.jpg"), "image/jpg"),
   
     ];
