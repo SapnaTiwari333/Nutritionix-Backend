@@ -4,9 +4,8 @@ const bcrypt=require("bcrypt");
 const jwt=require("jsonwebtoken");
 const dotenv=require("dotenv").config();
 
-const{GoogleGenerativeAI}=require("@google/generative-ai");
-const fs=require("fs");
-const path=require("path")
+
+
 
 //@desc Register a user
 //@route POST/api/users/register
@@ -97,49 +96,7 @@ const currentUser=asyncHandler(async(req,res)=>{
 
 });
 
-//@desc send image User
-//@route post /api/User/login/run
-//@access public
-
-  const searching= asyncHandler(async(req,res)=>{
-  const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-  
-  // Converts local file information to a GoogleGenerativeAI.Part object.
-  function fileToGenerativePart(filepath, mimeType) {
-    return {
-      inlineData: {
-        data: Buffer.from(fs.readFileSync(filepath)).toString("base64"),
-        mimeType
-      },
-    };
-  }
-  
-  async function run() {
-    // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-  
-    const prompt = "What ingredients are present in this dish and can you provide the quantity present(approx) also rough calories of each item and overall approx calories(lower value) ";
-  
-    const image = [
-      fileToGenerativePart((__dirname,"gemini/images/image.jpg"), "image/jpg"),
-  
-    ];
-  
-    const result = await model.generateContent([prompt, ...image]);
-    const response = await result.response;
-    const text = response.text();
-    return text;
-  } 
-
-    try {
-      const text = await run();
-      res.status(200).json({ success: true, msg: text });
-    } catch (error) {
-      console.error("Error in AI generation:", error);
-      res.status(500).json({ success: false, msg: "Failed to generate content." });
-    }
-  
-  });
 
 
-module.exports={registerUser,loginUser,currentUser,searching}
+
+module.exports={registerUser,loginUser,currentUser}
