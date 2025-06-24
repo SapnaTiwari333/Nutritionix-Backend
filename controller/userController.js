@@ -15,7 +15,6 @@ const registerUser=asyncHandler(async (req,res)=>{
     const{ username,email,password}=req.body;
     // to check that field are not empty
     if(!username || !email || !password){
-        res.status(400);
         throw new Error("All fields are mandatory!");
     }
 
@@ -48,7 +47,7 @@ const registerUser=asyncHandler(async (req,res)=>{
         throw new Error("User data is not valid");
          
     }
-   res.json({message:"Register the user"});
+   //res.json({message:"Register the user"});
 
 });
 

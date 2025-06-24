@@ -26,10 +26,10 @@ app.use(express.json());
 app.use("/api/users",require("./routes/userRoutes"));
 
 //Images analysis routes
-app.use("api/images",require("./routes/imageRoutes"));
+app.use("/api/images",require("./routes/imageRoutes"));
 
 // Error handler middleware
-app.use(errorHandler);
+//app.use(errorHandler);
 
 
 app.listen(PORT, () => {
