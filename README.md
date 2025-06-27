@@ -6,7 +6,6 @@
 - **MongoDB** for database storage  
 - **Google Gemini** for AI-powered image analysis  
 - **JWT** for secure authentication  
-- **Nodemailer** for email functionality  
 
 ---
 
@@ -65,3 +64,6 @@
    ```bash
    git clone https://github.com/yourusername/Calorie_Counter.git
    cd Calorie_Counter
+   ```
+   ---
+2. **Install dependencies:**
